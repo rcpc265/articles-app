@@ -12,48 +12,57 @@
         </div>
     </div>
 </div>
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 <form action="{{ route('articles.store') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name')}}">
             </div>
+            @error('name')
+            <div class="m-0 alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Code:</strong>
-                <input type="text" name="code" class="form-control" placeholder="Code">
+                <input type="text" name="code" class="form-control" placeholder="Code" value="{{ old('code')}}">
             </div>
+            @error('code')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description:</strong>
-                <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                <textarea class="form-control" style="height:150px" name="description"
+                    placeholder="Description">{{ old('description')}}</textarea>
             </div>
+            @error('description')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Status:</strong>
-                <input type="text" name="status" class="form-control" placeholder="Status">
+                <input type="text" name="status" class="form-control" placeholder="Status" value="{{ old('status')}}">
             </div>
+            @error('status')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Price:</strong>
-                <input type="text" name="price" class="form-control" placeholder="price">
+                <strong>Precio:</strong>
+                <input type="text" name="price" class="form-control" placeholder="Precio" value="{{ old('price')}}">
             </div>
+            @error('price')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
