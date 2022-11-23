@@ -15,11 +15,11 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('code')->unique();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
             $table->string('description');
-            $table->string('status')->default('on');
-            $table->float('price');
+            $table->enum('status', ['ON', 'OFF'])->default('ON');
+            $table->float('price', 6, 2);
             $table->timestamps();
         });
     }

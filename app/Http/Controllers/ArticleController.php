@@ -40,7 +40,7 @@ class ArticleController extends Controller
         Article::create($request->all());
 
         return redirect()->route('articles.index')
-        ->with('success', 'Article created successfully');
+            ->with('success', 'Article created successfully');
     }
 
     /**
@@ -76,7 +76,7 @@ class ArticleController extends Controller
     {
         $article->update($request->all());
         return redirect()->route('articles.index')
-        ->with('success', 'Article updated successfully');
+            ->with('success', 'Article updated successfully');
     }
 
     /**
@@ -88,7 +88,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect()->route('products.index')
-        ->with('success', 'Product deleted successfully');
+        return redirect()->route('articles.index')
+            ->with('success', 'Article deleted successfully');
     }
 }
