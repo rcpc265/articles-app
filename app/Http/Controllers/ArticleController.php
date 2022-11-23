@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Requests\Article\UpdateArticleRequest;
@@ -13,9 +14,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('id', 'DESC')
+            ->id($request->id)
+            ->name($request->name)
+            ->paginate(10);
+
         return view('articles.index', compact('articles'));
     }
 
