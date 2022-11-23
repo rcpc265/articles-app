@@ -19,22 +19,22 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name"
-                    value="{{ old('name') ?? $article->name }}">
-            </div>
-            @error('name')
-            <div class="m-0 alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>Code:</strong>
                 <input type="text" name="code" class="form-control" placeholder="Code"
                     value="{{ old('code') ?? $article->code }}">
             </div>
             @error('code')
             <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Name:</strong>
+                <input type="text" name="name" class="form-control" placeholder="Name"
+                    value="{{ old('name') ?? $article->name }}">
+            </div>
+            @error('name')
+            <div class="m-0 alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -67,6 +67,18 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Category:</strong>
+                <input type="text" name="category_id" class="form-control" placeholder="Category id"
+                    value="{{ old('category') }}">
+            </div>
+            @error('category_id')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>

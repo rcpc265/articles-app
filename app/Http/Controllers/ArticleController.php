@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Http\Requests\Article\StoreArticleRequest;
@@ -17,8 +18,10 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::orderBy('id', 'DESC')
+            ->with('category')
             ->id($request->id)
             ->name($request->name)
+            ->categoryName($request->category_name)
             ->paginate(10);
 
         return view('articles.index', compact('articles'));
@@ -31,7 +34,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $categories = Category::all();
+        return view('articles.create', compact('categories'));
     }
 
     /**
